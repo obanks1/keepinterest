@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import FeaturedVideoIcon from "@material-ui/icons/FeaturedVideo";
 
+import ArtTrackIcon from "@material-ui/icons/ArtTrack";
+
 import {
   FormControl,
   Input,
@@ -16,11 +18,15 @@ import {
 class TodoList extends Component {
   createTask = item => {
     return (
-      <ListItem button>
+      <ListItem button onClick={() => this.props.remove(item.key)}>
         <ListItemIcon>
-          <FeaturedVideoIcon />
+          {item.text.includes("design") ? (
+            <ArtTrackIcon />
+          ) : (
+            <FeaturedVideoIcon />
+          )}
         </ListItemIcon>
-        <ListItemText>{item.key}</ListItemText>
+        <ListItemText>{item.text}</ListItemText>
       </ListItem>
     );
   };

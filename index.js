@@ -32,13 +32,18 @@ class App extends Component {
     this.setState({ items });
   };
 
+  removeItem = key => {
+    const items = this.state.items.filter(i => i.key != key);
+    this.setState({ items });
+  };
+
   render() {
     return (
       <div>
         <Paper>
           <TopBar />
           <TodoAdder addItem={this.addItem} handleInput={this.handleInput} />
-          <TodoList entries={this.state.items} />
+          <TodoList entries={this.state.items} remove={this.removeItem} />
         </Paper>
       </div>
     );
